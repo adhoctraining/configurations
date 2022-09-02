@@ -1,0 +1,23 @@
+#
+# Alpine linux :: answer file for setup-alpine
+#
+# setup-alpine -f ANSWER_FILE
+#
+KEYMAPOPTS="us us"
+INTERFACESOPTS="auto lo
+iface lo inet loopback
+
+auto eth0
+iface eth0 inet dhcp
+    hostname alpine-test
+
+HOSTNAMEOPTS="-n <HOSTNAME>"
+
+DNSOPTS="-n 8.8.8.8"
+TIMEZONEOPTS="-z Canada/Eastern"
+PROXYOPTS="none"
+APKREPOSOPTS="-r"
+SSHDOPTS="-c openssh"
+NTPOPTS="-c chrony"
+DISKOPTS="-m sys /dev/sda"
+
