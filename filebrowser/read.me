@@ -1,3 +1,5 @@
+## Explanation of the config file
+
 The instuctions below are required before implement docker-compose.
 
 
@@ -7,4 +9,33 @@ touch docker-compose.yml
 nano docker-compose.yml 
 # copy the contents from configuration/docker-compose.yml in the git
 touch filebrowser.db
+=====================================================================
+version: '3.1'
+services:
+  file-browser:
+    image: filebrowser/filebrowser
+    container_name: file-browser
+    user: 1000:1000
+    ports:
+      - 8081:80
+    volumes:
+      - /home/student1/Desktop:/srv
+      - /home/student1/Desktop/filebrowser/filebrowser.db:/database.db
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+======================================================================
+Where:
+ ports: 8081
+        is the port used by your browser to see the filebrowser. Assuming that 
+        your host server ip address is 192.168.0.23, then in your browser you would 
+        type 192.168.0.23:8081 in order to see filebrowser.
+ port: 80
+        is the port used by the docker filebrowser container.
+
+/home/student1/Desktop
+        this represents the location to be accessed by filebrowser.
+        
+======================================================================
+starting docker
 docker-compose up -d --force-recreate
