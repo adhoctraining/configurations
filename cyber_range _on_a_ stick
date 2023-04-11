@@ -1,0 +1,42 @@
+version: "3"
+services:
+  attacker:
+    image: my_attacker_image
+    networks:
+      - wan
+    volumes:
+      - my_attacker_config:/etc/attacker
+  metasploitable:
+    image: metasploitable2
+    networks:
+      - dmz
+    volumes:
+      - metasploitable_data:/data
+    ports:
+      - "21:21"
+      - "22:22"
+      - "53:53"
+      - "80:80"
+      - "443:443"
+    command: ["/bin/bash", "/start.sh"]
+
+networks:
+  wan:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.0.0.0/16
+  lan:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.1.0.0/16
+  dmz:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.2.0.0/16
+
+volumes:
+  my_attacker_config:
+  metasploitable_data:
