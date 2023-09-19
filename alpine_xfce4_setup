@@ -1,0 +1,15 @@
+apk update
+apk upgrade
+setup-xorg-base
+apk add xfce4 xfce4-terminal xfce4-screensaver
+apk add lightdm-gtk-greeter
+apk add dbus adwaita-icon-theme
+apk add dbus
+apk add adwaita
+apk add adwaita-icon-theme
+rc-service dbus start
+rc-update add dbus
+setup-devd udev
+rc-service lightdm start
+rc-update add lightdm
+apk add firefox
