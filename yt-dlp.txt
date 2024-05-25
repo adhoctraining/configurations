@@ -1,0 +1,7 @@
+YouTuube Downloader
+
+
+sudo apt install yt-dlp
+
+Example usage:
+sudo yt-dlp -o "/home/Downloads/Chaos Theory.mp4" "https://www.youtube.com/watch?v=fTBGaauetb4"
